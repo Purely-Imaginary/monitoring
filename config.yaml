@@ -1,0 +1,18 @@
+service1:
+    name: First service
+    url: https://google.com/
+    tests:
+        - assert.http-status-200
+        - assert.http-header-html
+        
+service2:
+    name: Second service
+    url: https://wp.pl/
+    tests:
+        - assert.http-status-200
+
+service3:
+    name: Third service
+    url: https://onet.pl/
+    tests:
+        - assert.http-header-html
