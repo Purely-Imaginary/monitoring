@@ -49,3 +49,10 @@ serwis1:
 * Jeśli chcesz zastosować inne środowisko uruchomieniowe to możesz to zrobić.
 
 
+## AO comments
+* TODO: Tests
+* ExecutableTestInterface is not enforced
+* Cleaner retrieving of data in GetResultsCommand
+* Tests in services are its own entities instead of being grouped
+* Logging of every test in service is probably not necessary
+* Grouping tests to same url to not request same page everytime its tested
