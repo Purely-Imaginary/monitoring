@@ -17,10 +17,23 @@ class TestForHttpCodeBase extends AbstractTest
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
      */
-    public function execute(string $url, string $method = 'GET'): bool
+    public function execute(string $url, string $method = 'GET'): array
     {
-        $response = $this->httpClient->request($method,$url);
+        $result = false;
+        $error = null;
+        try {
+            $response = $this->httpClient->request($method, $url);
+            $result = $response->getStatusCode() === $this->httpReturnCode;
+            if (!$result) {
+                $error = $response->getStatusCode();
+            }
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+        }
 
-        return $response->getStatusCode() === $this->httpReturnCode;
+        return [
+            'result' => $result,
+            'error' => $error
+        ];
     }
 }

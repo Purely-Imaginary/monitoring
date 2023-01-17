@@ -17,12 +17,24 @@ class TestForHttpHeaderBase extends AbstractTest
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
      */
-    public function execute(string $url, string $method = 'GET'): bool
+    public function execute(string $url, string $method = 'GET'): array
     {
-        $response = $this->httpClient->request($method,$url);
+        $result = false;
+        $error = null;
+        try {
+            $response = $this->httpClient->request($method, $url);
+            $testHeader = $response->getHeaders()['content-type'][0];
+            $result = strpos($testHeader, $this->HTTP_HEADER_NAME) !== false;
+            if (!$result) {
+                $error = $testHeader;
+            }
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+        }
 
-        $testHeader = $response->getHeaders()['content-type'][0];
-
-        return strpos($testHeader, $this->HTTP_HEADER_NAME) !== false;
+        return [
+            'result' => $result,
+            'error' => $error
+        ];
     }
 }

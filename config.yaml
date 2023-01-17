@@ -4,7 +4,7 @@ service1:
     tests:
         - assert.http-status-200
         - assert.http-header-html
-        
+
 service2:
     name: Second service
     url: https://wp.pl/
@@ -15,4 +15,32 @@ service3:
     name: Third service
     url: https://onet.pl/
     tests:
+        - assert.http-header-html
+
+service4:
+    name: Test 4
+    url: https://onet404force.pl/
+    tests:
+        - assert.http-status-200
+        - assert.http-header-html
+
+service5:
+    name: Perma 500
+    url: http://httpstat.us/500
+    tests:
+        - assert.http-status-200
+        - assert.http-header-html
+
+service6:
+    name: Perma 404
+    url: http://httpstat.us/404
+    tests:
+        - assert.http-status-200
+        - assert.http-header-html
+
+service8:
+    name: Json result
+    url: https://jsonplaceholder.typicode.com/todos/1
+    tests:
+        - assert.http-status-200
         - assert.http-header-html
