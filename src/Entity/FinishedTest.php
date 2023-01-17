@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="finished_test")
+ *
  */
+
 class FinishedTest
 {
     /**
