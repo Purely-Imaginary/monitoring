@@ -2,13 +2,14 @@
 
 namespace App\Test;
 
+use App\Interfaces\ExecutableTestInterface;
 use Exception;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
-class TestForHttpHeaderBase extends AbstractTest
+class TestForHttpHeaderBase extends AbstractTest implements ExecutableTestInterface
 {
     public $HTTP_HEADER_NAME = 0;
 
