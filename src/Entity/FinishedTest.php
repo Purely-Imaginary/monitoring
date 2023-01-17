@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,7 +44,7 @@ class FinishedTest
     protected $url;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      *
      * @ORM\Column(type="datetime")
      */
@@ -65,7 +66,7 @@ class FinishedTest
 
     public function __construct()
     {
-        $this->testTime = new \DateTimeImmutable();
+        $this->testTime = new DateTimeImmutable();
     }
 
     /**
@@ -141,18 +142,18 @@ class FinishedTest
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return DateTimeImmutable
      */
-    public function getTestTime(): \DateTimeImmutable
+    public function getTestTime(): DateTimeImmutable
     {
         return $this->testTime;
     }
 
     /**
-     * @param \DateTimeImmutable $testTime
+     * @param DateTimeImmutable $testTime
      * @return FinishedTest
      */
-    public function setTestTime(\DateTimeImmutable $testTime): FinishedTest
+    public function setTestTime(DateTimeImmutable $testTime): FinishedTest
     {
         $this->testTime = $testTime;
         return $this;

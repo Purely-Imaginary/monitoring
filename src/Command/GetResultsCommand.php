@@ -36,7 +36,7 @@ class GetResultsCommand extends Command
     public function execute(
         InputInterface  $input,
         OutputInterface $output
-    )
+    ): int
     {
         $testResults = $this->finishedTestRepository->getLastResults();
         $failedTests = array_filter($testResults, function ($test) {

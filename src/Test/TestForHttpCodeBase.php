@@ -2,6 +2,7 @@
 
 namespace App\Test;
 
+use Exception;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -27,7 +28,7 @@ class TestForHttpCodeBase extends AbstractTest
             if (!$result) {
                 $error = $response->getStatusCode();
             }
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $error = $exception->getMessage();
         }
 

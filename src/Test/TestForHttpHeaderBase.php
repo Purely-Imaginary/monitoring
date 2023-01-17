@@ -2,6 +2,7 @@
 
 namespace App\Test;
 
+use Exception;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -28,7 +29,7 @@ class TestForHttpHeaderBase extends AbstractTest
             if (!$result) {
                 $error = $testHeader;
             }
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $error = $exception->getMessage();
         }
 

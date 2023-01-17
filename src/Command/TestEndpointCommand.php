@@ -40,7 +40,7 @@ class TestEndpointCommand extends Command
     public function execute(
         InputInterface  $input,
         OutputInterface $output
-    )
+    ): int
     {
         $io = new SymfonyStyle($input, $output);
         $service = $input->getOption('service');

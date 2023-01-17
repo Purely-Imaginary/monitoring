@@ -6,7 +6,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class AbstractTest
 {
-    public const SIGNATURE = '';
     /**
      * @var HttpClientInterface
      */
