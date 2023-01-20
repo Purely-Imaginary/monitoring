@@ -1,52 +1,52 @@
-# Zadanie
-Celem zadania jest stworzenie aplikacji pozwalającej na prosty monitoring usług internetowych.
+# Task
+The purpose of the task is to create an application that allows for simple monitoring of Internet services.
 
-## W trakcie spotkania całego zespołu spisano następujące wymagania
-* Aplikacja pozwala na zdefiniowanie wielu usług, które podlegają monitorowaniu
-* Konfiguracja usług monitorowanych odbywa się poprzez dodanie odpowiednich wpisów w pliku konfiguracyjnym
-* Konfiguracja polegać będzie na zdefiniowaniu danych takich jak
-  * nazwa usługi
-  * adres url usługi
-  * listy testów sprawdzających takich jak np. statusu odpowiedzi, nagłówek Content-Type i może wyglądać następująco:
+## During the meeting of the whole team the following requirements were written down.
+* The application allows you to define multiple services that are subject to monitoring.
+* Configuration of monitored services is done by adding appropriate entries in the configuration file.
+* Configuration will consist of defining data such as.
+  * name of the service
+  * url of the service
+  * a list of validation tests such as response status, Content-Type header and may look as follows:
 
 ```
-serwis1:
-  name: Serwis pierwszy
+service1:
+  name: Service one
   url: https://example.com/test.html
   tests:
     - assert.http-status-200
     - assert.http-header-html
 ```
-* Jeśli którykolwiek test zwróci błąd, to aplikacja przyjmuje że serwis nie działa
-* Wynik testu zapisywany jest do bazy wraz z datą jego wykonania oraz z informacją, który test wygenerowała błąd
-* Baza danych przetrzymuje pełną historię wykonanych testów
-* Aplikacja nie posiada interfejsu graficznego, a sterowanie odbywa się za pomocą konsoli
-* Uruchomienie sprawdzania odbywa się za pomocą komendy. I uruchamiana przez crona. Komenda pozwala ona na wybranie testowanej usługi lub wszystkich naraz.
-* Sprawdzanie wyników odbywa się poprzez uruchomienie odpowiedniej komendy, która generuje w postaci tabelki ostatni wynik testu dla każdej usługi. Tabelka zawiera następujące kolumny
-  * nazwa usługi
-  * data testu
-  * wynik testu
-  * test, który wygenerował błąd
+* If any test returns an error, the application assumes that the service is not working.
+* The result of the test is saved to the database along with the date of its execution and the information which test generated the error.
+* The database stores the full history of the performed tests.
+* The application does not have a graphical interface, and the control is done through the console.
+* Running the check is done by command. And run by cron. The command allows you to select the tested service or all of them at once.
+* Checking the results is done by running the corresponding command, which generates in the form of a table the last test result for each service. The table contains the following columns
+  * name of the service
+  * test date
+  * test result
+  * the test that generated the error
 
-## Zespół zdefiniował następujące kierunki rozwoju
-* Lista możliwych testów jak i usług będzie się rozrastać
-* Aplikacja będzie w przyszłości mogła monitorować usługi inne iż WWW np. FTP
-* Wykonanie niektórych testów jest bardzo czasochłonne ze względu na czas odpowiedzi. Trzeba przygotować aplikację na wykonywanie testów w sposób asychroniczny
-* Z czasem serwisów będzie przybywać co spowoduje potrzebę skalowania aplikacji na kilka serwerów.
-* Aplikacja zostanie w przyszłości rozbudowana, o możliwość wysyłki powiadomień na maila w przypadku wykrycia niedziałającej usługi oraz o logowanie bardziej szczegółowych informacji dotyczących testu do zewnętrznego systemu zbierania logów.
-* W przyszłości powstanie panel administracyjny gdzie będzie można  konfigurować testy. Pozwoli to na zrezygnowanie z pliku konfiguracyjnego.
+## The team has defined the following development directions
+* The list of possible tests as well as services will grow.
+* The application will be able to monitor services other that WWW e.g. FTP in the future.
+* Execution of some tests is very time consuming due to response time. It is necessary to prepare the application to perform tests in an asychronous manner.
+* Over time, there will be more and more services which will cause the need to scale the application to several servers.
+* The application will be expanded in the future, with the ability to send email notifications when a non-functioning service is detected, and to log more detailed information about the test to an external log collection system.
+* In the future there will be an administration panel where tests can be configured. This will allow you to dispense with the configuration file.
 
-## Komentarz
-* Zadanie możesz wykonać przy użyciu dowolnych narzędzi, chociaż preferowany jest framework Symfony
-* Twoim zadaniem jest wykonać aplikację spełniającą tylko podstawowe zadania (MVP)
-* Wybierz architekturę pozwalająca na łatwe wprowadzenie kolejnych zaplanowanych funkcjonalności
-* Trzymaj się zasad czystego kodu
-* Jeśli napiszesz kod uproszczony, który można napisać lepiej ale dla potrzeb MVP wg Ciebie nie ma sensu to opisz to w komentarzu.
-* Jeśli masz swoje przemyślenia, jakie rozwiązania można by wprowadzić w przyszłości, lub inne komentarze to napisz je w README.
+## Comment
+* You can perform the task using any tools, although the Symfony framework is preferred.
+* Your task is to make an application that performs only basic tasks (MVP).
+* Choose an architecture that allows you to easily introduce further planned functionality.
+* Stick to the principles of clean code.
+* If you write simplified code that can be written better but for the purpose of MVP in your opinion does not make sense then describe it in the comments.
+* If you have your thoughts, what solutions could be introduced in the future, or other comments then write them in the README.
 
-## Uwaga
-* Srodowisko uruchomieniowe zostało utworzone na bazie projektu https://github.com/dunglas/symfony-docker, https://symfony.com/doc/current/setup/docker.html.
-* Jeśli chcesz zastosować inne środowisko uruchomieniowe to możesz to zrobić.
+## Note
+* The runtime environment was created based on the project https://github.com/dunglas/symfony-docker, https://symfony.com/doc/current/setup/docker.html.
+* If you want to use a different runtime environment then you can do so.
 
 
 ## AO comments
